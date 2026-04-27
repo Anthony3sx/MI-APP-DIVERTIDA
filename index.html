@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini App Divertida</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>Mi app Divertida 😏</h2>
+    <button id="btn">Haz clic</button>
+    <p id="resultado">Inténtalo si puedes...</p>
+
+    <script>
+        const btn = document.getElementById("btn");
+        const resultado = document.getElementById("resultado");
+
+        const opciones = [
+            "Sí 😎",
+            "No 😂",
+            "Tal vez 🤔",
+            "Obvio no 🤡",
+            "Ni en tus sueños 😴",
+            "Pregunta otra vez 🙄",
+            "Sí... pero no 😏"
+        ];
+
+        btn.addEventListener("click", () => {
+            let random = Math.floor(Math.random() * opciones.length);
+            resultado.innerText = opciones[random];
+
+            // animación
+            resultado.classList.add("boom");
+            setTimeout(() => resultado.classList.remove("boom"), 300);
+
+            // botón troll (a veces se mueve)
+            if (Math.random() < 0.4) {
+                const x = Math.random() * (window.innerWidth - 100);
+                const y = Math.random() * (window.innerHeight - 50);
+
+                btn.style.position = "absolute";
+                btn.style.left = x + "px";
+                btn.style.top = y + "px";
+            }
+        });
+    </script>
+
+</body>
+</html>
